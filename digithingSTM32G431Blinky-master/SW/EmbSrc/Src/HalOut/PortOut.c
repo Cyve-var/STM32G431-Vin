@@ -5,18 +5,6 @@
 #include"../App/common.h"
 
 
-// LED
-/*
-ePortOutState PortOutGetStatePB6(void) {
-	eLedState PortOutLedState = LedGetState();
-		if (LED_ON == PortOutLedState) {
-			return PORT_OUT_PORT_HIGH;
-	}
-		else {
-			return PORT_OUT_PORT_LOW;
-		}
-}
-*/
 
 // leds from switchled.c
 
