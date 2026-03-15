@@ -1,0 +1,3 @@
+#define RCC_SYSCLOCK_170000000 170000000
+
+void 	G431RccInit	(void);
