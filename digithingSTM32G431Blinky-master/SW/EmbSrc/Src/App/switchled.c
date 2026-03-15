@@ -10,6 +10,7 @@
 
 #include "switchled.h"
 #include "../HalIn/PortIn.h"
+#include "../HalOut/PortOut.h"
 
 
 
@@ -34,40 +35,21 @@ void SwitchMain(void){
 
 	// PB0 -> PA9
 
-	if (PORT_IN_PORT_HIGH == PortInGetStatePB0()) {
-		Led_PA9_State = LED_ON;
-	}
-	else {
-		Led_PA9_State = LED_OFF;
-		}
+	Led_PA9_State = PortInGetStatePB0();
+
 
     // PB7 -> PA10
-	if (PORT_IN_PORT_HIGH == PortInGetStatePB7()) {
-		Led_PA10_State = LED_ON;
-	}
-	else {
-		Led_PA10_State = LED_OFF;
-		}
+	Led_PA10_State = PortInGetStatePB7();
 
     // PB5 -> PA12
-	if (PORT_IN_PORT_HIGH == PortInGetStatePB5()) {
-			Led_PA12_State= LED_ON;
-	}
-	else {
-			Led_PA12_State = LED_OFF;
-		}
+	Led_PA12_State = PortInGetStatePB5();
 
     // PB4 -> PA8
-	if (PORT_IN_PORT_HIGH == PortInGetStatePB4()) {
-			Led_PA8_State = LED_ON;
-	}
-	else {
-			Led_PA8_State = LED_OFF;
-		}
-
+	Led_PA8_State  = PortInGetStatePB4();
 
 
 }
+
 
 eLedState Led_PA9_GetState(void)  {
 	return Led_PA9_State;
