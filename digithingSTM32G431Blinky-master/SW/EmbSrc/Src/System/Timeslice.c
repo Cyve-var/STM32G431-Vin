@@ -28,10 +28,12 @@ void TimesliceInit(void) {
 
 void Timeslot1 (void) { /* 10ms */
 	GpioOutMain();
-	SwitchMain();
+
 }
 void Timeslot2 (void) {
-
+	StatusSwitchInit();
+	LedInit();
+	SwitchMain();
 }
 
 void Timeslot4 (void) {

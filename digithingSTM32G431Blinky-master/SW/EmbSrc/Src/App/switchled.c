@@ -5,9 +5,6 @@
  *      Author: Vince
  */
 
-
-
-
 #include "switchled.h"
 #include "../HalIn/PortIn.h"
 #include "../HalOut/PortOut.h"
@@ -15,54 +12,60 @@
 
 
 eStatusSwitchState StatusSwitchState;
-eLedState Led_PA9_State;
-eLedState Led_PA10_State;
-eLedState Led_PA12_State;
-eLedState Led_PA8_State;
+eLedState Led_PA9_State;    // LED 1
+eLedState Led_PA10_State;  // LED 2
+eLedState Led_PA12_State; // LED 3
+eLedState Led_PA11_State; // LED 4
 
 void StatusSwitchInit(void) {
 	StatusSwitchState = STATUS_SWITCH_OFF;
 }
 
-void Led2Init(void) {
-	   Led_PA9_State  = LED_OFF;
-	    Led_PA10_State = LED_OFF;
-	    Led_PA12_State = LED_OFF;
-	    Led_PA8_State = LED_OFF;
+void LedInit(void) {
+	   Led_PA9_State  = LED_OFF;     // LED 1
+	    Led_PA10_State = LED_OFF;   // LED 2
+	    Led_PA12_State = LED_OFF;  // LED 3
+	    Led_PA11_State = LED_OFF;  // LED 4
 }
 
 void SwitchMain(void){
-
+	// Switch 1 -> LED 1
 	// PB0 -> PA9
-
 	Led_PA9_State = PortInGetStatePB0();
 
-
+	//  Switch 2 -> LED 2
     // PB7 -> PA10
 	Led_PA10_State = PortInGetStatePB7();
 
+	// Switch 3 -> LED 3
     // PB5 -> PA12
 	Led_PA12_State = PortInGetStatePB5();
 
+	// Switch 4
     // PB4 -> PA8
-	Led_PA8_State  = PortInGetStatePB4();
+	Led_PA11_State  = PortInGetStatePB4();
 
 
 }
 
-
+// LED 1
 eLedState Led_PA9_GetState(void)  {
 	return Led_PA9_State;
 }
 
+// LED 2
 eLedState Led_PA10_GetState(void) {
 	return Led_PA10_State;
 }
+
+// LED 3
 eLedState Led_PA12_GetState(void) {
 	return Led_PA12_State;
 }
-eLedState Led_PA8_GetState(void) {
-	return Led_PA8_State;
+
+// LED 4
+eLedState Led_PA11_GetState(void) {
+	return Led_PA11_State;
 }
 
 

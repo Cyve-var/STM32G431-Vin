@@ -12,8 +12,6 @@ int main()
 {
 	G431RccInit();
 	GpioInit();
-	// StatusSwitchInit();
-	//Led2Init();
 	CortexM4SysTickInit();
 
 	TimesliceInit();

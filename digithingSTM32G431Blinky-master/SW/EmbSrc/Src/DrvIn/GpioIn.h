@@ -1,10 +1,12 @@
 typedef enum {GPIO_IN_PORT_LOW, GPIO_IN_PORT_HIGH} eGpioInPortState;
 
-
-eGpioInPortState GpioInGetPortB12(void);
-eGpioInPortState GpioInGetPortB7(void); // button from button.c
 // switches from switchled.c
+// Switch 1
 eGpioInPortState GpioInGetPortB0(void);
+// Switch 2
+eGpioInPortState GpioInGetPortB7(void);
+// Switch 3
 eGpioInPortState GpioInGetPortB5(void);
+// Switch 4
 eGpioInPortState GpioInGetPortB4(void);
 

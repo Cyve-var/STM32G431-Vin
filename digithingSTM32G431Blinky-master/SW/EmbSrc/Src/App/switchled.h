@@ -10,16 +10,18 @@
 typedef enum  {STATUS_SWITCH_ON, STATUS_SWITCH_OFF}
 eStatusSwitchState;
 
-// Led
-
-
+void LedInit(void);
 void StatusSwitchInit(void);
 void SwitchMain(void);
-void Led2Init(void);
+
 
 eStatusSwitchState StatusSwitchGetState(void);
 
+// LED 1
 eLedState Led_PA9_GetState(void);
+// LED 2
 eLedState Led_PA10_GetState(void);
+// LED 3
 eLedState Led_PA12_GetState(void);
-eLedState Led_PA8_GetState(void);
+// LED 4
+eLedState Led_PA11_GetState(void);

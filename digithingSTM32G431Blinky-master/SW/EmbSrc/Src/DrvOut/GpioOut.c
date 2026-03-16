@@ -6,10 +6,12 @@
 void GpioOutPortB(void) {
 	volatile sSTM32G431_GPIOB* pSTM32G431_GPIOB = (sSTM32G431_GPIOB*)GPIOB_ADR;
 	uSTM32G431_GPIOB_BSRR STM32G431_GPIOB_BSRR;
+
+	STM32G431_GPIOB_BSRR.All = 0;
+
 /*
 	ePortOutState State = PortOutGetStatePA8();
 
-	STM32G431_GPIOB_BSRR.All = 0;
 	if (PORT_OUT_PORT_HIGH == State) {
 		STM32G431_GPIOB_BSRR.Bit.BS8 = 1;
 	}
@@ -35,18 +37,12 @@ void GpioOutPortA(void) {
 	volatile sSTM32G431_GPIOA* pSTM32G431_GPIOA = (sSTM32G431_GPIOA*)GPIOA_ADR;
 	uSTM32G431_GPIOA_BSRR STM32G431_GPIOA_BSRR;
 
-	ePortOutState State = PortOutGetStatePA8();
-
 	STM32G431_GPIOA_BSRR.All = 0;
-	if (PORT_OUT_PORT_HIGH == State) {
-		STM32G431_GPIOA_BSRR.Bit.BS8 = 1;
-		}
-	else {
-		STM32G431_GPIOA_BSRR.Bit.BR8 = 1;
-		}
+
 
 	// Leds from switchled
-	State = PortOutGetStatePA9();
+	// LED 1
+	ePortOutState State = PortOutGetStatePA9();
 
 	if (PORT_OUT_PORT_HIGH == State) {
 			STM32G431_GPIOA_BSRR.Bit.BS9 = 1;
@@ -55,6 +51,7 @@ void GpioOutPortA(void) {
 			STM32G431_GPIOA_BSRR.Bit.BR9 = 1;
 			}
 
+	// LED 2
 	State = PortOutGetStatePA10();
 
 		if (PORT_OUT_PORT_HIGH == State) {
@@ -63,7 +60,7 @@ void GpioOutPortA(void) {
 			else {
 				STM32G431_GPIOA_BSRR.Bit.BR10 = 1;
 				}
-
+	// LED 3
 	State = PortOutGetStatePA12();
 
 	if (PORT_OUT_PORT_HIGH == State) {
@@ -73,13 +70,14 @@ void GpioOutPortA(void) {
 			STM32G431_GPIOA_BSRR.Bit.BR12 = 1;
 			}
 
-	State = PortOutGetStatePA8();
+	// LED 4
+	State = PortOutGetStatePA11();
 
 	if (PORT_OUT_PORT_HIGH == State) {
-			STM32G431_GPIOA_BSRR.Bit.BS8 = 1;
+			STM32G431_GPIOA_BSRR.Bit.BS11 = 1;
 			}
 		else {
-			STM32G431_GPIOA_BSRR.Bit.BR8 = 1;
+			STM32G431_GPIOA_BSRR.Bit.BR11 = 1;
 			}
 
 	pSTM32G431_GPIOA->STM32G431_GPIOA_BSRR.All = STM32G431_GPIOA_BSRR.All;

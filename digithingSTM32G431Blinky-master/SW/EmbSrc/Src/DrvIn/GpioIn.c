@@ -4,19 +4,10 @@
 #include "../STM32G431/STM32G431_GPIOA_Def.h"
 
 
-// button from button.c
-eGpioInPortState GpioInGetPortB7(void) {
-	volatile sSTM32G431_GPIOB* pSTM32G431_GPIOB = (sSTM32G431_GPIOB*)(GPIOB_ADR);
-	if (1 == pSTM32G431_GPIOB->STM32G431_GPIOB_IDR.Bit.IDR7) {
-		return GPIO_IN_PORT_HIGH;
-	}
-	else {
-		return GPIO_IN_PORT_LOW;
-	}
-}
-
 // Switches from swichtled.c
 
+
+// Switch 1
 eGpioInPortState GpioInGetPortB0(void) {
 	volatile sSTM32G431_GPIOB* pSTM32G431_GPIOB = (sSTM32G431_GPIOB*)(GPIOB_ADR);
 	if (1 == pSTM32G431_GPIOB->STM32G431_GPIOB_IDR.Bit.IDR0) {
@@ -27,8 +18,18 @@ eGpioInPortState GpioInGetPortB0(void) {
 	}
 }
 
+// Switch 2
+eGpioInPortState GpioInGetPortB7(void) {
+	volatile sSTM32G431_GPIOB* pSTM32G431_GPIOB = (sSTM32G431_GPIOB*)(GPIOB_ADR);
+	if (1 == pSTM32G431_GPIOB->STM32G431_GPIOB_IDR.Bit.IDR7) {
+		return GPIO_IN_PORT_HIGH;
+	}
+	else {
+		return GPIO_IN_PORT_LOW;
+	}
+}
 
-
+// Switch 3
 eGpioInPortState GpioInGetPortB5(void) {
 	volatile sSTM32G431_GPIOB* pSTM32G431_GPIOB = (sSTM32G431_GPIOB*)(GPIOB_ADR);
 	if (1 == pSTM32G431_GPIOB->STM32G431_GPIOB_IDR.Bit.IDR5) {
@@ -39,6 +40,7 @@ eGpioInPortState GpioInGetPortB5(void) {
 	}
 }
 
+// Switch 4
 eGpioInPortState GpioInGetPortB4(void) {
 	volatile sSTM32G431_GPIOB* pSTM32G431_GPIOB = (sSTM32G431_GPIOB*)(GPIOB_ADR);
 	if (1 == pSTM32G431_GPIOB->STM32G431_GPIOB_IDR.Bit.IDR4) {
