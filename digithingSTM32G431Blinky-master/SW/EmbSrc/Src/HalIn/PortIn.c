@@ -36,8 +36,8 @@ ePortInState PortInGetStatePB5(void) {
 }
 
 // Switch 4
-ePortInState PortInGetStatePB4(void) {
-	eGpioInPortState PortInStateStatusSwitch= GpioInGetPortB4();
+ePortInState PortInGetStatePA2(void) {
+	eGpioInPortState PortInStateStatusSwitch= GpioInGetPortA2();
 	if (GPIO_IN_PORT_HIGH == PortInStateStatusSwitch) {
 		return PORT_IN_PORT_HIGH;
 }

@@ -9,5 +9,5 @@ ePortInState PortInGetStatePB7(void);
 // Switch 3
 ePortInState PortInGetStatePB5(void);
 // Switch 4
-ePortInState PortInGetStatePB4(void);
+ePortInState PortInGetStatePA2(void);
 

@@ -43,7 +43,7 @@ void SwitchMain(void){
 
 	// Switch 4
     // PB4 -> PA8
-	Led_PA11_State  = PortInGetStatePB4();
+	Led_PA11_State  = PortInGetStatePA2();
 
 
 }

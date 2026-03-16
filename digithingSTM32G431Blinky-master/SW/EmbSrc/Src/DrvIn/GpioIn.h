@@ -8,5 +8,5 @@ eGpioInPortState GpioInGetPortB7(void);
 // Switch 3
 eGpioInPortState GpioInGetPortB5(void);
 // Switch 4
-eGpioInPortState GpioInGetPortB4(void);
+eGpioInPortState GpioInGetPortA2(void);
 

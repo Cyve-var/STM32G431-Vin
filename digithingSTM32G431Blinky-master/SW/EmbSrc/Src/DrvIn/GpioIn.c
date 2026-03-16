@@ -41,9 +41,9 @@ eGpioInPortState GpioInGetPortB5(void) {
 }
 
 // Switch 4
-eGpioInPortState GpioInGetPortB4(void) {
-	volatile sSTM32G431_GPIOB* pSTM32G431_GPIOB = (sSTM32G431_GPIOB*)(GPIOB_ADR);
-	if (1 == pSTM32G431_GPIOB->STM32G431_GPIOB_IDR.Bit.IDR4) {
+eGpioInPortState GpioInGetPortA2(void) {
+	volatile sSTM32G431_GPIOA* pSTM32G431_GPIOA = (sSTM32G431_GPIOA*)(GPIOA_ADR);
+	if (1 == pSTM32G431_GPIOA->STM32G431_GPIOA_IDR.Bit.IDR2) {
 		return GPIO_IN_PORT_HIGH;
 	}
 	else {
