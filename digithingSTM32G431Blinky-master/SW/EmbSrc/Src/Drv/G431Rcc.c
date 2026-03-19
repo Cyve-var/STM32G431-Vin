@@ -20,9 +20,14 @@ void G431RccInit(void)
 {
 	volatile sSTM32G431_RCC* pRcc = (sSTM32G431_RCC*)RCC_ADR;
 	uSTM32G431_RCC_RCC_AHB2ENR RccAhb2enr;
+	// New: for timer
+	uSTM32G431_RCC_RCC_APB1ENR1 RccApb1enr1;
 
 	RccAhb2enr.All = 0;			// Reset value: 0x0000 0000
 	RccAhb2enr.Bit.GPIOBEN = 1;
 	RccAhb2enr.Bit.GPIOAEN = 1;
+	// New: for timer
+	RccApb1enr1.Bit.TIM3EN = 1;
 	pRcc->STM32G431_RCC_RCC_AHB2ENR.All = RccAhb2enr.All;
+	pRcc->STM32G431_RCC_RCC_APB1ENR1.All = RccApb1enr1;
 }
