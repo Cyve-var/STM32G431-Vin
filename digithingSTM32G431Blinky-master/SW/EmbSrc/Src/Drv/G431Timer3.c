@@ -26,10 +26,10 @@ void G431Timer3Init(void) {
 	STM32G431_TIM3_CCMR1_OUTPUT.Bit.OC2PE = 1;
 
 	STM32G431_TIM3_DIER.All = 0;
-	STM32G431_TIM3_DIER.Bit.TDE = 0; // Trigger DMA, nicht nötig, externer Timer
+	STM32G431_TIM3_DIER.Bit.TDE = 1; // Trigger DMA,
 	STM32G431_TIM3_DIER.Bit.CC2DE = 1;
 	STM32G431_TIM3_DIER.Bit.TIE = 0; // Trigger Interupt, nicht nötig
-	STM32G431_TIM3_DIER.Bit.UDE = 0; // Update DMA Enable
+	STM32G431_TIM3_DIER.Bit.UDE = 1; // Update DMA Enable
 	STM32G431_TIM3_DIER.Bit.UIE = 0;
 
 	STM32G431_TIM3_CR1.All = 0;

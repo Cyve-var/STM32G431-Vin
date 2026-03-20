@@ -1,0 +1,53 @@
+#include "../Target/Target.h"
+#include "../STM32G431/STM32G431_DMA1_CH6_Def.h"
+// #include "../STM32G431/STM32G431_ADC1_Def.h"
+// #include "../STM32G431/STM32G431_ADC1_2_Def.h"
+#include "../STM32G431/STM32G431_TIM3_Def.h"
+#include "../HalOut/NeoPixel.h"
+
+#define DMA_CHANNEL_0 0
+
+unsigned long DmaAdc[4];
+
+unsigned long DmaGetValueAdc(unsigned char Chn) {
+	return DmaAdc[Chn];
+}
+
+void G431DmaInitCh1 (void) {
+
+	volatile sSTM32G431_DMA1_CH6* pSTM32G431_DMA1_CH6 = (sSTM32G431_DMA1_CH6*)DMA_ADR;
+	volatile sSTM32G431_TIM3* pSTM32G431_TIM3 = (sSTM32G431_TIM3*)TIM3_ADR;
+
+	volatile uSTM32G431_DMA1_CH6_CCR2 STM32G431_DMA1_CH6_CCR2;
+	volatile uSTM32G431_DMA1_CH6_CNDTR1 STM32G431_DMA1_CH6_CNDTR1;
+
+	uNeoPixelProtocol * pDmaNeoPixelProtocol;
+	pDmaNeoPixelProtocol = pNeoPixelGetProtocolData();
+
+	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CPAR1.Bit.PA = (unsigned long)&pSTM32G431_TIM3->STM32G431_TIM3_CCR2.All;
+	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CMAR1.Bit.MA = (unsigned long)(pDmaNeoPixelProtocol);
+
+	STM32G431_DMA1_CH6_CNDTR1.All = 0;
+	STM32G431_DMA1_CH6_CNDTR1.Bit.NDT = (NEOPIXEL_DATA_SIZE_RAW+NEO_PIXEL_TIME_RESET);
+	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CNDTR1.All = STM32G431_DMA1_CH6_CNDTR1.All;
+
+	STM32G431_DMA1_CH6_CCR2.All = 0;
+	STM32G431_DMA1_CH6_CCR2.Bit.MEM2MEM = 0;
+	STM32G431_DMA1_CH6_CCR2.Bit.PL = 0;
+	STM32G431_DMA1_CH6_CCR2.Bit.MSIZE = 0;
+	STM32G431_DMA1_CH6_CCR2.Bit.PSIZE = 2;
+	STM32G431_DMA1_CH6_CCR2.Bit.MINC = 1;
+	STM32G431_DMA1_CH6_CCR2.Bit.PINC = 0;
+	STM32G431_DMA1_CH6_CCR2.Bit.DIR = 1;
+	STM32G431_DMA1_CH6_CCR2.Bit.CIRC= 0; // Circular Mode, DMA restarts forever
+	STM32G431_DMA1_CH6_CCR2.Bit.TCIE= 1; //Transfer Complete Interrupt Enable.
+	STM32G431_DMA1_CH6_CCR2.Bit.EN = 1;
+	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CCR2.All = STM32G431_DMA1_CH6_CCR2.All;
+}
+
+void G431DmaMain(void) {
+#if 0 /* Only for debug reason to find out if dma works */
+	volatile sSTM32G431_DMA1_CH6* pSTM32G431_DMA1_CH6 = (sSTM32G431_DMA1_CH6*)DMA_ADR;
+	ASM("NOP");
+#endif
+}
