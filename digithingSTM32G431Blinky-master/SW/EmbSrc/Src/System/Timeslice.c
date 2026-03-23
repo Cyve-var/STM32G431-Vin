@@ -4,6 +4,7 @@
 #include "../App/StatusLed.h"
 // #include "../App/button.h"
 #include "../App/switchled.h"
+#include "../HalOut/NeoPixel.h""
 
 #define TS_case_2     1
 #define TS_case_4     3
@@ -31,8 +32,6 @@ void Timeslot1 (void) { /* 10ms */
 
 }
 void Timeslot2 (void) {
-	StatusSwitchInit();
-	LedInit();
 	SwitchMain();
 }
 
@@ -47,7 +46,9 @@ void Timeslot32 (void) {
 
 	/*StatusLedMain()*/
 	}
-void Timeslot64 (void) { }
+void Timeslot64 (void) {
+	NeoPixelMain();
+}
 void Timeslot128 (void) { 
 }
 void Timeslot256 (void) {}

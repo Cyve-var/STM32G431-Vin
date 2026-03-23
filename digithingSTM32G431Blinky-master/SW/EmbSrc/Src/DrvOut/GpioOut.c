@@ -86,6 +86,7 @@ void GpioOutPortA(void) {
 }
 
 
+
 void GpioOutMain(void) {
 	GpioOutPortB();
 	GpioOutPortA();

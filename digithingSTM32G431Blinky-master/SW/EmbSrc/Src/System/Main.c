@@ -6,6 +6,7 @@
 #include "..\Drv\G431Gpio.h"
 #include "..\App\switchled.h"
 #include "..\System\Timeslice.h"
+#include "..\App\neopixcode.h"
 
 
 int main()
@@ -13,6 +14,11 @@ int main()
 	G431RccInit();
 	GpioInit();
 	CortexM4SysTickInit();
+	StatusSwitchInit();
+	LedInit();
+	LedMatrixInit();
+	NeoPixelInit();
+
 
 	TimesliceInit();
 	StartTimesliceForever();

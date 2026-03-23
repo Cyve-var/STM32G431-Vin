@@ -51,4 +51,3 @@ ePortOutState PortOutGetStatePA11(void) {
 	}
 }
 
-

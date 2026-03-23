@@ -27,7 +27,10 @@ void G431RccInit(void)
 	RccAhb2enr.Bit.GPIOBEN = 1;
 	RccAhb2enr.Bit.GPIOAEN = 1;
 	// New: for timer
+	RccApb1enr1.All = 0;
+
 	RccApb1enr1.Bit.TIM3EN = 1;
+
 	pRcc->STM32G431_RCC_RCC_AHB2ENR.All = RccAhb2enr.All;
-	pRcc->STM32G431_RCC_RCC_APB1ENR1.All = RccApb1enr1;
+	pRcc->STM32G431_RCC_RCC_APB1ENR1.All = RccApb1enr1.All;
 }
