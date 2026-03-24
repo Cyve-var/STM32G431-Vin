@@ -16,3 +16,11 @@ void G431DmaMuxInit(void) {
 
     pSTM32G431_DMAMUX_OVR->STM32G431_DMAMUX_OVR_C0CR.All = STM32G431_DMAMUX_OVR_C0CR.All;
 }
+
+
+void G431DmaMuxMain(void) {
+#if 1 /* Only for debug reason to find out if dma works */
+	volatile sSTM32G431_DMAMUX_OVR* pSTM32G431_DMAMUX_OVR = (sSTM32G431_DMAMUX_OVR*)DMA_MUX_ADR;
+	ASM("NOP");
+#endif
+}

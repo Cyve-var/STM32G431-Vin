@@ -22,15 +22,27 @@ void G431RccInit(void)
 	uSTM32G431_RCC_RCC_AHB2ENR RccAhb2enr;
 	// New: for timer
 	uSTM32G431_RCC_RCC_APB1ENR1 RccApb1enr1;
+	// For DMA:
+	uSTM32G431_RCC_RCC_AHB1ENR RccAhb1enr;
 
+	// Reset AHB2
 	RccAhb2enr.All = 0;			// Reset value: 0x0000 0000
+	// Reset APB1Enr1 TIMER
+	RccApb1enr1.All = 0;
+	// Reset AHB1
+	RccAhb1enr.All = 0;
+
+	// Set the Bits AHB2
 	RccAhb2enr.Bit.GPIOBEN = 1;
 	RccAhb2enr.Bit.GPIOAEN = 1;
-	// New: for timer
-	RccApb1enr1.All = 0;
-
+	// Set the BITs APB1
 	RccApb1enr1.Bit.TIM3EN = 1;
+	// Set bit AHB1
+	RccAhb1enr.Bit.DMA1EN = 1;
 
+	// Write to Hardware
 	pRcc->STM32G431_RCC_RCC_AHB2ENR.All = RccAhb2enr.All;
 	pRcc->STM32G431_RCC_RCC_APB1ENR1.All = RccApb1enr1.All;
+	pRcc->STM32G431_RCC_RCC_AHB1ENR.All = RccAhb1enr.All;
+
 }

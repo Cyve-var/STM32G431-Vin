@@ -7,18 +7,24 @@
 #include "..\App\switchled.h"
 #include "..\System\Timeslice.h"
 #include "..\App\neopixcode.h"
-
-
+#include "..\HalOut\NeoPixel.h"
+#include "..\CortexM4\CortexM4Nvic.h"
+#include "..\Drv\G431DMAMUX.h"
+#include "..\Drv\G431Dma.h"
 int main()
 {
 	G431RccInit();
 	GpioInit();
 	CortexM4SysTickInit();
+	CortexM4NvicInit();
 	StatusSwitchInit();
+	G431DmaInitCh1();
+	G431DmaMain();
+	G431DmaMuxInit();
+	G431DmaMuxMain();
 	LedInit();
 	LedMatrixInit();
 	NeoPixelInit();
-
 
 	TimesliceInit();
 	StartTimesliceForever();

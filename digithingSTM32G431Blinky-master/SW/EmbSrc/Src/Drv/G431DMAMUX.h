@@ -9,5 +9,5 @@
 #define SRC_DRV_G431DMAMUX_H_
 
 void G431DmaMuxInit(void);
-
+void G431DmaMuxMain(void);
 #endif /* SRC_DRV_G431DMAMUX_H_ */

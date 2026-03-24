@@ -4,7 +4,9 @@
 #include "../App/StatusLed.h"
 // #include "../App/button.h"
 #include "../App/switchled.h"
-#include "../HalOut/NeoPixel.h""
+#include "../HalOut/NeoPixel.h"
+#include "../Drv/G431Dma.h"
+#include "../App/neopixcode.h"
 
 #define TS_case_2     1
 #define TS_case_4     3
@@ -32,14 +34,14 @@ void Timeslot1 (void) { /* 10ms */
 
 }
 void Timeslot2 (void) {
-	SwitchMain();
+	//SwitchMain();
 }
 
 void Timeslot4 (void) {
 
 }
 void Timeslot8 (void) {
-	//ButtonMain();
+
 }
 void Timeslot16 (void) { }
 void Timeslot32 (void) {
@@ -47,6 +49,7 @@ void Timeslot32 (void) {
 	/*StatusLedMain()*/
 	}
 void Timeslot64 (void) {
+	LedMatrixMain();
 	NeoPixelMain();
 }
 void Timeslot128 (void) { 

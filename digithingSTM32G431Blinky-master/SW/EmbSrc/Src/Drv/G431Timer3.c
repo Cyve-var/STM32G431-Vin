@@ -11,36 +11,39 @@ void G431Timer3Init(void) {
 	volatile uSTM32G431_TIM3_ARR STM32G431_TIM3_ARR;
 	volatile uSTM32G431_TIM3_CCR2 STM32G431_TIM3_CCR2;
 
-	// note: Changing things to 2 because PA4 TIM3 is on _CH2
-
+	//  Timer Period/Pulse  conf
 	STM32G431_TIM3_ARR.All = 211; // STM32G431 170GHz Clock 5,88 ns per tick Leds need 1250ns so: 1250/5,88= 212,6 -1
-	STM32G431_TIM3_CCR2.All = 0;
+	STM32G431_TIM3_CCR2.All = 0; // Init PWM (Duty Cycle)
 
-	STM32G431_TIM3_CCER.All = 0;
-	STM32G431_TIM3_CCER.Bit.CC2P = 0;
-	STM32G431_TIM3_CCER.Bit.CC2E = 1;
+	// Output Control (CCER)
+	STM32G431_TIM3_CCER.All = 0; // Reset Capture/Compare Enable Register
+	STM32G431_TIM3_CCER.Bit.CC2P = 0; // Output Polarity
+	STM32G431_TIM3_CCER.Bit.CC2E = 1; // Capture/Compare 2 Output Enable (Turn on Channel 2 pin
 	pSTM32G431_TIM3->STM32G431_TIM3_CCER.All = STM32G431_TIM3_CCER.All;
 
-	STM32G431_TIM3_CCMR1_OUTPUT.All = 0;
-	STM32G431_TIM3_CCMR1_OUTPUT.Bit.OC2M = 6;
-	STM32G431_TIM3_CCMR1_OUTPUT.Bit.OC2PE = 1;
+	// Output MODE Configuration (CCMR)
+	STM32G431_TIM3_CCMR1_OUTPUT.All = 0; // Reset Mode Register
+	STM32G431_TIM3_CCMR1_OUTPUT.Bit.OC2M = 6; // Output Compare 2 Mode: PWM Mode 1 (High then Low)
+	STM32G431_TIM3_CCMR1_OUTPUT.Bit.OC2PE = 1; // Output Compare 2 Preload Enable (Buffer the CCR2 value)
 
-	STM32G431_TIM3_DIER.All = 0;
+	// Interrupt and DMA (DIER)
+	STM32G431_TIM3_DIER.All = 0; // Reset DMA/Interrupt Enable Register
 	STM32G431_TIM3_DIER.Bit.TDE = 1; // Trigger DMA,
-	STM32G431_TIM3_DIER.Bit.CC2DE = 1;
-	STM32G431_TIM3_DIER.Bit.TIE = 0; // Trigger Interupt, nicht nötig
+	STM32G431_TIM3_DIER.Bit.CC2DE = 1;// Trigger DMA Request: Enabled
+	STM32G431_TIM3_DIER.Bit.TIE = 0; // Trigger Interupt
 	STM32G431_TIM3_DIER.Bit.UDE = 1; // Update DMA Enable
-	STM32G431_TIM3_DIER.Bit.UIE = 0;
+	STM32G431_TIM3_DIER.Bit.UIE = 0; // Update Intterrupt Disabled
 
-	STM32G431_TIM3_CR1.All = 0;
-	STM32G431_TIM3_CR1.Bit.CEN = 1;
-	STM32G431_TIM3_CR1.Bit.UDIS = 0;
-	STM32G431_TIM3_CR1.Bit.URS = 1;
-	STM32G431_TIM3_CR1.Bit.OPM = 0;
-	STM32G431_TIM3_CR1.Bit.DIR = 0;
-	STM32G431_TIM3_CR1.Bit.CMS = 0;
-	STM32G431_TIM3_CR1.Bit.ARPE = 1;
-	STM32G431_TIM3_CR1.Bit.CKD = 0;
+	// Control Register 1
+	STM32G431_TIM3_CR1.All = 0; // Reset Control Register
+	STM32G431_TIM3_CR1.Bit.CEN = 1; // Counter Enable: Start the Timer
+	STM32G431_TIM3_CR1.Bit.UDIS = 0;  // Update Disable: 0
+	STM32G431_TIM3_CR1.Bit.URS = 1; // Update Request Source
+	STM32G431_TIM3_CR1.Bit.OPM = 0; // One-Pulse Mode: Disabled (kontinuierlich)
+	STM32G431_TIM3_CR1.Bit.DIR = 0; // Direction Upcounter
+	STM32G431_TIM3_CR1.Bit.CMS = 0; // Edge Aligned Mode
+	STM32G431_TIM3_CR1.Bit.ARPE = 1; // Auto Reload Preload Enable buffer ARR
+	STM32G431_TIM3_CR1.Bit.CKD = 0; // clock dead-time division. no divisoin
 
 	pSTM32G431_TIM3->STM32G431_TIM3_ARR.All = STM32G431_TIM3_ARR.All;
 
