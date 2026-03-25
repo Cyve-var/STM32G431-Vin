@@ -53,6 +53,8 @@ void Timeslot64 (void) {
 	NeoPixelMain();
 }
 void Timeslot128 (void) { 
+	G431DmaMain();
+	G431DmaMuxMain();
 }
 void Timeslot256 (void) {}
 

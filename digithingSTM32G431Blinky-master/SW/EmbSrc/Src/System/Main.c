@@ -24,9 +24,7 @@ int main()
 	LedMatrixInit();
 	NeoPixelInit();
 	G431DmaInitCh1();
-	G431DmaMain();
 	G431DmaMuxInit();
-	G431DmaMuxMain();
 	G431Timer3Init();
 
 
