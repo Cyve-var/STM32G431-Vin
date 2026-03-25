@@ -5,9 +5,9 @@ unsigned char LedSceneActual;
 unsigned char LedSceneBrightness;
 
 // Szenendefinition
-#define SZENE_OFF       1
-#define SZENE_ON        2
-#define SZENE_Half		3
+#define SZENE_OFF       0
+#define SZENE_ON        1
+#define SZENE_Half		2
 
 // LED table GRB
 const tLedMatrix LedSceneTable[3] = {
@@ -40,10 +40,12 @@ const tLedMatrix LedSceneTable[3] = {
 };
 void LedMatrixInit(void) {
 	LedSceneActual = 1;
+	LedSceneBrightness = 0;
+
 }
 
 void LedMatrixMain(void) {
-	LedSceneActual = 2;
+	LedSceneActual = SZENE_ON;
 	LedSceneBrightness = 25;
 
 

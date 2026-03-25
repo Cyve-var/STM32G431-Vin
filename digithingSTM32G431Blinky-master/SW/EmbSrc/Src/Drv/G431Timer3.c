@@ -31,7 +31,7 @@ void G431Timer3Init(void) {
 	STM32G431_TIM3_DIER.Bit.TDE = 1; // Trigger DMA,
 	STM32G431_TIM3_DIER.Bit.CC2DE = 1;// Trigger DMA Request: Enabled
 	STM32G431_TIM3_DIER.Bit.TIE = 0; // Trigger Interupt
-	STM32G431_TIM3_DIER.Bit.UDE = 1; // Update DMA Enable
+	STM32G431_TIM3_DIER.Bit.UDE = 0; // Update DMA Enable
 	STM32G431_TIM3_DIER.Bit.UIE = 0; // Update Intterrupt Disabled
 
 	// Control Register 1

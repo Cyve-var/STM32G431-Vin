@@ -28,8 +28,7 @@ void G431DmaInitCh1 (void) {
 	uNeoPixelProtocol * pDmaNeoPixelProtocol;
 	pDmaNeoPixelProtocol = pNeoPixelGetProtocolData();
 
-	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CPAR1.All = 123;
-			//(unsigned long)&pSTM32G431_TIM3->STM32G431_TIM3_CCR2.All
+	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CPAR1.Bit.PA = (unsigned long)&pSTM32G431_TIM3->STM32G431_TIM3_CCR2.All;
 	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CMAR1.Bit.MA = (unsigned long)(pDmaNeoPixelProtocol);
 
 	STM32G431_DMA1_CH6_CNDTR1.All = 0;
@@ -44,7 +43,7 @@ void G431DmaInitCh1 (void) {
 	STM32G431_DMA1_CH6_CCR1.Bit.MINC = 1; // Memory increment mode enabled
 	STM32G431_DMA1_CH6_CCR1.Bit.PINC = 0; // Peripheral increment mode disabled (fixed address)
 	STM32G431_DMA1_CH6_CCR1.Bit.DIR = 1; // Memory to Peripheral
-	STM32G431_DMA1_CH6_CCR1.Bit.CIRC= 1; // Circular Mode, DMA restarts forever
+	STM32G431_DMA1_CH6_CCR1.Bit.CIRC= 0; // Circular Mode, DMA restarts forever
 	STM32G431_DMA1_CH6_CCR1.Bit.TCIE= 1; //Transfer Complete Interrupt Enable.
 	STM32G431_DMA1_CH6_CCR1.Bit.EN = 1; // DMA Channel Enable
 	pSTM32G431_DMA1_CH6->STM32G431_DMA1_CH6_CCR1.All = STM32G431_DMA1_CH6_CCR1.All; // Apply config to hardware

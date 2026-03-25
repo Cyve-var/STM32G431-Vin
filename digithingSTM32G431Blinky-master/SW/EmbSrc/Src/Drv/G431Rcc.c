@@ -25,6 +25,7 @@ void G431RccInit(void)
 	// For DMA:
 	uSTM32G431_RCC_RCC_AHB1ENR RccAhb1enr;
 
+
 	// Reset AHB2
 	RccAhb2enr.All = 0;			// Reset value: 0x0000 0000
 	// Reset APB1Enr1 TIMER
@@ -39,6 +40,8 @@ void G431RccInit(void)
 	RccApb1enr1.Bit.TIM3EN = 1;
 	// Set bit AHB1
 	RccAhb1enr.Bit.DMA1EN = 1;
+	RccAhb1enr.Bit.DMA2EN = 1;
+	RccAhb1enr.Bit.DMAMUX1EN = 1;
 
 	// Write to Hardware
 	pRcc->STM32G431_RCC_RCC_AHB2ENR.All = RccAhb2enr.All;

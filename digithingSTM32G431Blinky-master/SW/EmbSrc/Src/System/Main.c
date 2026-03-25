@@ -11,6 +11,7 @@
 #include "..\CortexM4\CortexM4Nvic.h"
 #include "..\Drv\G431DMAMUX.h"
 #include "..\Drv\G431Dma.h"
+#include "..\Drv\G431Timer3.h"
 int main()
 {
 	G431RccInit();
@@ -18,13 +19,17 @@ int main()
 	CortexM4SysTickInit();
 	CortexM4NvicInit();
 	StatusSwitchInit();
+
+	LedInit();
+	LedMatrixInit();
+	NeoPixelInit();
 	G431DmaInitCh1();
 	G431DmaMain();
 	G431DmaMuxInit();
 	G431DmaMuxMain();
-	LedInit();
-	LedMatrixInit();
-	NeoPixelInit();
+	G431Timer3Init();
+
+
 
 	TimesliceInit();
 	StartTimesliceForever();
