@@ -80,9 +80,8 @@ void GpioOutPortA(void) {
 			STM32G431_GPIOA_BSRR.Bit.BR11 = 1;
 			}
 
+
 	pSTM32G431_GPIOA->STM32G431_GPIOA_BSRR.All = STM32G431_GPIOA_BSRR.All;
-
-
 }
 
 

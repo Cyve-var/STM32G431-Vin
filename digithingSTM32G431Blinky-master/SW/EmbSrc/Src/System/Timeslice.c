@@ -6,6 +6,8 @@
 #include "../App/switchled.h"
 #include "../HalOut/NeoPixel.h"
 #include "../Drv/G431Dma.h"
+#include "../Drv/G431Timer3.h"
+#include "../Drv/G431DMAMUX.h"
 #include "../App/neopixcode.h"
 
 #define TS_case_2     1
@@ -55,6 +57,7 @@ void Timeslot64 (void) {
 void Timeslot128 (void) { 
 	G431DmaMain();
 	G431DmaMuxMain();
+	G431Timer3Main();
 }
 void Timeslot256 (void) {}
 

@@ -8,3 +8,4 @@
 
 void G431Timer3Init(void);
 void G431Timer3Main(void);
+void G431Timer3Main(void);

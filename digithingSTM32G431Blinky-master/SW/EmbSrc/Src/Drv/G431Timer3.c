@@ -31,7 +31,7 @@ void G431Timer3Init(void) {
 	STM32G431_TIM3_DIER.Bit.TDE = 1; // Trigger DMA,
 	STM32G431_TIM3_DIER.Bit.CC2DE = 1;// Trigger DMA Request: Enabled
 	STM32G431_TIM3_DIER.Bit.TIE = 0; // Trigger Interupt
-	STM32G431_TIM3_DIER.Bit.UDE = 0; // Update DMA Enable
+	STM32G431_TIM3_DIER.Bit.UDE = 1; // Update DMA Enable
 	STM32G431_TIM3_DIER.Bit.UIE = 0; // Update Intterrupt Disabled
 
 	// Control Register 1
@@ -43,10 +43,10 @@ void G431Timer3Init(void) {
 	STM32G431_TIM3_CR1.Bit.DIR = 0; // Direction Upcounter
 	STM32G431_TIM3_CR1.Bit.CMS = 0; // Edge Aligned Mode
 	STM32G431_TIM3_CR1.Bit.ARPE = 1; // Auto Reload Preload Enable buffer ARR
-	STM32G431_TIM3_CR1.Bit.CKD = 0; // clock dead-time division. no divisoin
+	STM32G431_TIM3_CR1.Bit.CKD = 0; // clock dead-time division. no division
+
 
 	pSTM32G431_TIM3->STM32G431_TIM3_ARR.All = STM32G431_TIM3_ARR.All;
-
 	pSTM32G431_TIM3->STM32G431_TIM3_DIER.All = STM32G431_TIM3_DIER.All;
 	pSTM32G431_TIM3->STM32G431_TIM3_CCR2.All = STM32G431_TIM3_CCR2.All;
 	pSTM32G431_TIM3->STM32G431_TIM3_CCMR1_Output.All = STM32G431_TIM3_CCMR1_OUTPUT.All;
@@ -57,3 +57,10 @@ void G431Timer3Init(void) {
 
 }
 
+
+void G431Timer3Main(void) {
+#if 1 /* Only for debug reason to find out if dma works */
+	volatile sSTM32G431_TIM3* pSTM32G431_TIM3 = (sSTM32G431_TIM3*)TIM3_ADR;
+	ASM("NOP");
+#endif
+}
