@@ -17,7 +17,7 @@ void G431Timer3Init(void) {
 	//  Timer Period/Pulse  conf
 	STM32G431_TIM3_PSC.All = 50;
 	STM32G431_TIM3_ARR.All = 211; // STM32G431 170GHz Clock 5,88 ns per tick Leds need 1250ns so: 1250/5,88= 212,6 -1
-	STM32G431_TIM3_CCR2.All = 106; //Init PWM (Duty Cycle)
+	STM32G431_TIM3_CCR2.All = 0; //Init PWM (Duty Cycle)
 
 	// Output Control (CCER)
 	STM32G431_TIM3_CCER.All = 0; // Reset Capture/Compare Enable Register
@@ -48,7 +48,7 @@ void G431Timer3Init(void) {
 	STM32G431_TIM3_CR1.Bit.UDIS = 0;  // Update Disable: 0
 	STM32G431_TIM3_CR1.Bit.URS = 1; // Update Request Source
 	STM32G431_TIM3_CR1.Bit.OPM = 0; // One-Pulse Mode: Disabled (kontinuierlich)
-	STM32G431_TIM3_CR1.Bit.DIR = 0; // Direction
+	STM32G431_TIM3_CR1.Bit.DIR = 1; // Direction
 	STM32G431_TIM3_CR1.Bit.CMS = 0; // Edge Aligned Mode
 	STM32G431_TIM3_CR1.Bit.ARPE = 1; // Auto Reload Preload Enable buffer ARR
 	STM32G431_TIM3_CR1.Bit.CKD = 0; // clock dead-time division. no division

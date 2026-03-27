@@ -289,9 +289,9 @@ typedef union {
     unsigned long  All;
 } uSTM32G431_TIM3_PSC;
 
-#define STM32G431_TIM3_ARR_RESET_VALUE 0xFFFFFFFF
+#define STM32G431_TIM3_ARR_RESET_VALUE 0x0000FFFF
 typedef struct {
-    unsigned long ARR : 20;
+    unsigned long ARR : 20; // from 20 to 16 test
     unsigned long Res0 : 12;
 } sSTM32G431_TIM3_ARR;
 
@@ -566,21 +566,21 @@ typedef struct {
     uSTM32G431_TIM3_CCER STM32G431_TIM3_CCER; // Offset: 0x20
     uSTM32G431_TIM3_CNT STM32G431_TIM3_CNT; // Offset: 0x24
     uSTM32G431_TIM3_PSC STM32G431_TIM3_PSC; // Offset: 0x28
-    uSTM32G431_TIM3_ARR STM32G431_TIM3_ARR; // Offset: 0x2c
-    unsigned long Reserved0;
+    uSTM32G431_TIM3_ARR STM32G431_TIM3_ARR; // Offset: 0x2C
+    unsigned long Reserved0; // 0x30
     uSTM32G431_TIM3_CCR1 STM32G431_TIM3_CCR1; // Offset: 0x34
     uSTM32G431_TIM3_CCR2 STM32G431_TIM3_CCR2; // Offset: 0x38
     uSTM32G431_TIM3_CCR3 STM32G431_TIM3_CCR3; // Offset: 0x3c
     uSTM32G431_TIM3_CCR4 STM32G431_TIM3_CCR4; // Offset: 0x40
-    unsigned long Reserved1;
-	unsigned long Reserved2;
-	unsigned long Reserved3;
-	unsigned long Reserved4;
+    unsigned long Reserved1; // 0x44
+	unsigned long Reserved2; // 0x48
+	unsigned long Reserved3; // 0x4C
+	unsigned long Reserved4; // 0x50
+	unsigned long Reserved5; // 0x54
 	uSTM32G431_TIM3_ECR STM32G431_TIM3_ECR; // Offset: 0x58
 	uSTM32G431_TIM3_TISEL STM32G431_TIM3_TISEL; // Offset: 0x5c
 	uSTM32G431_TIM3_AF1 STM32G431_TIM3_AF1; // Offset: 0x60
 	uSTM32G431_TIM3_AF2 STM32G431_TIM3_AF2; // Offset: 0x64
-	unsigned long Reserved5;
 	unsigned long Reserved6;
     unsigned long Reserved7;
     unsigned long Reserved8;
@@ -796,8 +796,8 @@ typedef struct {
     unsigned long Reserved218;
     unsigned long Reserved219;
     unsigned long Reserved220;
-    uSTM32G431_TIM3_BDTR STM32G431_TIM3_DCR; // Offset: 0x3DC
-    uSTM32G431_TIM3_CCR5 STM32G431_TIM3_DMAR; // Offset: 0x3E0
+    uSTM32G431_TIM3_DCR STM32G431_TIM3_DCR; // Offset: 0x3DC
+    uSTM32G431_TIM3_DMAR STM32G431_TIM3_DMAR; // Offset: 0x3E0
 
 } sSTM32G431_TIM3;
 
