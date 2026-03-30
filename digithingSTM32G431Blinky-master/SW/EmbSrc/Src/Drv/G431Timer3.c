@@ -15,7 +15,7 @@ void G431Timer3Init(void) {
 
 
 	//  Timer Period/Pulse  conf
-	STM32G431_TIM3_PSC.All = 1;
+	STM32G431_TIM3_PSC.All = 0;
 	STM32G431_TIM3_ARR.All = 211; // STM32G431 170GHz Clock 5,88 ns per tick Leds need 1250ns so: 1250/5,88= 212,6 -1
 	STM32G431_TIM3_CCR2.All = 0; // Init PWM (Duty Cycle)
 
@@ -32,8 +32,8 @@ void G431Timer3Init(void) {
 
 	// Interrupt and DMA (DIER)
 	STM32G431_TIM3_DIER.All = 0; // Reset DMA/Interrupt Enable Register
-	STM32G431_TIM3_DIER.Bit.TDE = 1; // Trigger DMA,
-	STM32G431_TIM3_DIER.Bit.CC2DE = 1;// Trigger DMA Request: Enabled
+	STM32G431_TIM3_DIER.Bit.TDE = 0; // Trigger DMA,
+	STM32G431_TIM3_DIER.Bit.CC2DE = 0;// Trigger DMA Request: Enabled
 	STM32G431_TIM3_DIER.Bit.TIE = 0; // Trigger Interupt
 	STM32G431_TIM3_DIER.Bit.UDE = 1; // Update DMA Enable
 	STM32G431_TIM3_DIER.Bit.UIE = 0; // Update Interrupt Disabled

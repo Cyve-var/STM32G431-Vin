@@ -51,7 +51,7 @@ void Timeslot32 (void) {
 	/*StatusLedMain()*/
 	}
 void Timeslot64 (void) {
-	LedMatrixMain();
+	// LedMatrixMain();
 	NeoPixelMain();
 }
 void Timeslot128 (void) { 
