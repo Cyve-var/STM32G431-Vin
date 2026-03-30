@@ -289,7 +289,7 @@ typedef union {
     unsigned long  All;
 } uSTM32G431_TIM3_PSC;
 
-#define STM32G431_TIM3_ARR_RESET_VALUE 0x0000FFFF
+#define STM32G431_TIM3_ARR_RESET_VALUE 0x0000FFFF // was FFFFFFFF
 typedef struct {
     unsigned long ARR : 20; // from 20 to 16 test
     unsigned long Res0 : 12;
@@ -559,10 +559,14 @@ typedef struct {
     uSTM32G431_TIM3_DIER STM32G431_TIM3_DIER; // Offset: 0xc
     uSTM32G431_TIM3_SR STM32G431_TIM3_SR; // Offset: 0x10
     uSTM32G431_TIM3_EGR STM32G431_TIM3_EGR; // Offset: 0x14
-    uSTM32G431_TIM3_CCMR1_Output STM32G431_TIM3_CCMR1_Output; // Offset: 0x18
-    uSTM32G431_TIM3_CCMR1_Input STM32G431_TIM3_CCMR1_Input; // Offset: 0x18
-    uSTM32G431_TIM3_CCMR2_Output STM32G431_TIM3_CCMR2_Output; // Offset: 0x1c
-    uSTM32G431_TIM3_CCMR2_Input STM32G431_TIM3_CCMR2_Input; // Offset: 0x1c
+    union {
+        uSTM32G431_TIM3_CCMR1_Output Output;
+        uSTM32G431_TIM3_CCMR1_Input  Input;
+    } STM32G431_TIM3_CCMR1;   // Offset: 0x18
+    union {
+        uSTM32G431_TIM3_CCMR2_Output Output;
+        uSTM32G431_TIM3_CCMR2_Input  Input;
+    } STM32G431_TIM3_CCMR2;   // Offset: 0x1C
     uSTM32G431_TIM3_CCER STM32G431_TIM3_CCER; // Offset: 0x20
     uSTM32G431_TIM3_CNT STM32G431_TIM3_CNT; // Offset: 0x24
     uSTM32G431_TIM3_PSC STM32G431_TIM3_PSC; // Offset: 0x28

@@ -6,16 +6,8 @@
 #include "../HalOut/NeoPixel.h"
 
 
-#define DMA_CHANNEL_0 0
+// #define DMA_CHANNEL_0 0
 
-/*
-unsigned long DmaAdc[4];
-
-
-unsigned long DmaGetValueAdc(unsigned char Chn) {
-	return DmaAdc[Chn];
-}
-*/
 
 
 
@@ -42,7 +34,7 @@ void G431DmaInitCh1 (void) {
 	STM32G431_DMA1_CH6_CCR1.Bit.PL = 0; // Priority level: Low
 	STM32G431_DMA1_CH6_CCR1.Bit.MSIZE = 0; // Memory data size: 8-bit
 	STM32G431_DMA1_CH6_CCR1.Bit.PSIZE = 2; // Peripheral data size: 32-bit
-	STM32G431_DMA1_CH6_CCR1.Bit.MINC = 1; // Memory increment mode enabled
+	STM32G431_DMA1_CH6_CCR1.Bit.MINC = 0; // Memory increment mode enabled
 	STM32G431_DMA1_CH6_CCR1.Bit.PINC = 0; // Peripheral increment mode disabled (fixed address)
 	STM32G431_DMA1_CH6_CCR1.Bit.DIR = 1; // Memory to Peripheral
 	STM32G431_DMA1_CH6_CCR1.Bit.CIRC= 1; // Circular Mode, DMA restarts forever
