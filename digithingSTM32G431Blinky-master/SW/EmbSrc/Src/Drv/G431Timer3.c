@@ -10,7 +10,7 @@ void G431Timer3Init(void) {
 	volatile uSTM32G431_TIM3_CR1 STM32G431_TIM3_CR1;
 	volatile uSTM32G431_TIM3_ARR STM32G431_TIM3_ARR;
 	volatile uSTM32G431_TIM3_CCR2 STM32G431_TIM3_CCR2;
-	volatile uSTM32G431_TIM3_EGR STM32G431_TIM3_EGR;
+	// volatile uSTM32G431_TIM3_EGR STM32G431_TIM3_EGR;
 	volatile uSTM32G431_TIM3_PSC STM32G431_TIM3_PSC;
 
 
@@ -34,13 +34,13 @@ void G431Timer3Init(void) {
 	STM32G431_TIM3_DIER.All = 0; // Reset DMA/Interrupt Enable Register
 	STM32G431_TIM3_DIER.Bit.TDE = 0; // Trigger DMA,
 	STM32G431_TIM3_DIER.Bit.CC2DE = 0;// Trigger DMA Request: Enabled
-	STM32G431_TIM3_DIER.Bit.TIE = 0; // Trigger Interupt
+	STM32G431_TIM3_DIER.Bit.TIE = 1; // Trigger Interupt
 	STM32G431_TIM3_DIER.Bit.UDE = 1; // Update DMA Enable
 	STM32G431_TIM3_DIER.Bit.UIE = 0; // Update Interrupt Disabled
 
 
-	STM32G431_TIM3_EGR.All = 0;
-	STM32G431_TIM3_EGR.Bit.UG = 1;
+	// STM32G431_TIM3_EGR.All = 0;
+	// STM32G431_TIM3_EGR.Bit.UG = 1;
 
 	// Control Register 1
 	STM32G431_TIM3_CR1.All = 0; // Reset Control Register
@@ -48,7 +48,7 @@ void G431Timer3Init(void) {
 	STM32G431_TIM3_CR1.Bit.UDIS = 0;  // Update Disable: 0
 	STM32G431_TIM3_CR1.Bit.URS = 1; // Update Request Source
 	STM32G431_TIM3_CR1.Bit.OPM = 0; // One-Pulse Mode: Disabled (kontinuierlich)
-	STM32G431_TIM3_CR1.Bit.DIR = 1; // Direction 0 = Downcounting 1 = Upcounting
+	STM32G431_TIM3_CR1.Bit.DIR = 0; // Direction 0 = Downcounting 1 = Upcounting
 	STM32G431_TIM3_CR1.Bit.CMS = 0; // Edge Aligned Mode
 	STM32G431_TIM3_CR1.Bit.ARPE = 1; // Auto Reload Preload Enable buffer ARR
 	STM32G431_TIM3_CR1.Bit.CKD = 0; // clock dead-time division. no division
@@ -58,7 +58,7 @@ void G431Timer3Init(void) {
 	pSTM32G431_TIM3->STM32G431_TIM3_PSC.All = STM32G431_TIM3_PSC.All;
 	pSTM32G431_TIM3->STM32G431_TIM3_ARR.All = STM32G431_TIM3_ARR.All;
 	pSTM32G431_TIM3->STM32G431_TIM3_DIER.All = STM32G431_TIM3_DIER.All;
-	pSTM32G431_TIM3->STM32G431_TIM3_EGR.All = STM32G431_TIM3_EGR.All;
+//	pSTM32G431_TIM3->STM32G431_TIM3_EGR.All = STM32G431_TIM3_EGR.All;
 	pSTM32G431_TIM3->STM32G431_TIM3_CCR2.All = STM32G431_TIM3_CCR2.All;
 	pSTM32G431_TIM3->STM32G431_TIM3_CCMR1.Output.All = STM32G431_TIM3_CCMR1_OUTPUT.All;
 	pSTM32G431_TIM3->STM32G431_TIM3_CR1.All = STM32G431_TIM3_CR1.All;

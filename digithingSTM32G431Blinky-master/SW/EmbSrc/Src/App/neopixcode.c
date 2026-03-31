@@ -58,7 +58,7 @@ void LedMatrixInit(void) {
 }
 
 void LedMatrixMain(void) {
-	LedSceneActual = SZENE_ON;
+	LedSceneActual = SZENE_Half;
 	LedSceneBrightness = 25;
 
 
