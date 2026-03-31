@@ -49,3 +49,5 @@ void G431RccInit(void)
 	pRcc->STM32G431_RCC_RCC_AHB1ENR.All = RccAhb1enr.All;
 
 }
+
+
