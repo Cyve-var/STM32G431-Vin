@@ -16,7 +16,7 @@ void G431Timer3Init(void) {
 
 	//  Timer Period/Pulse  conf
 	STM32G431_TIM3_PSC.All = 0;
-	STM32G431_TIM3_ARR.All = 211; // STM32G431 16MHz Clock 5,88 ns per tick Leds need 1250ns so: 1250/5,88= 212,6 -1
+	STM32G431_TIM3_ARR.All = 19; // STM32G431 16MHz Clock 5,88 ns per tick Leds need 1250ns so: 1250/5,88= 212,6 -1
 	STM32G431_TIM3_CCR2.All = 0; // Init PWM (Duty Cycle)
 
 	// Output Control (CCER)
