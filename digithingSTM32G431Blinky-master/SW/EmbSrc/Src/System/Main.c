@@ -7,6 +7,7 @@
 #include "..\App\switchled.h"
 #include "..\System\Timeslice.h"
 #include "..\App\neopixcode.h"
+#include "..\App\MatrixDiscovery.h"
 #include "..\HalOut\NeoPixel.h"
 #include "..\CortexM4\CortexM4Nvic.h"
 #include "..\Drv\G431DMAMUX.h"

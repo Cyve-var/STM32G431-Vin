@@ -33,7 +33,7 @@ void TimesliceInit(void) {
 
 void Timeslot1 (void) { /* 10ms */
 	GpioOutMain();
-
+	MatrixDiscovery_Process();
 }
 void Timeslot2 (void) {
 	//SwitchMain();
